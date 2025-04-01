@@ -1,0 +1,5 @@
+# Virtual Environment
+.venv
+
+# File to mak tests
+test.ipynb
