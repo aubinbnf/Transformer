@@ -37,7 +37,7 @@ class PositionalEncoding(nn.module):
 
     def forward(self, x):
         x = x + (self.pe[:, :x.shape[1], :]).requires_grad(False)
-        return self.dropout(xs)
+        return self.dropout(x)
 
 class LayerNormalization(nn.Module):
 
@@ -172,7 +172,7 @@ class Decoder(nn.Module):
     def forward(self, x, encoder_output, src_mask, tgt_mask):
         for layer in self.layers:
             x = layer(x, encoder_output, src_mask, tgt_mask)
-        return norm(x)
+        return self.norm(x)
 
 class ProjectionLayer(nn.Module):
 
